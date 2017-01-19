@@ -1,24 +1,25 @@
 import { Component } from '@angular/core';
-export class Student{
-	id: number;
-	name: string;
-}
+
+import { Student } from './student';
+
 
 const STUDENTS: Student[] = [
-  { id: 1, name: 'Mr. Nice' },
-  { id: 2, name: 'Narco' },
-  { id: 3, name: 'Bombasto' },
-  { id: 4, name: 'Celeritas' },
-  { id: 5, name: 'Magneta' },
-  { id: 6, name: 'RubberMan' },
-  { id: 7, name: 'Dynama' },
-  { id: 8, name: 'Dr IQ' },
-  { id: 9, name: 'Magma' },
-  { id: 10, name: 'Tornado' }
+  { id: 1, name: 'Joanna' },
+  { id: 2, name: 'Rafał' },
+  { id: 3, name: 'Ania' },
+  { id: 4, name: 'Ana' },
+  { id: 5, name: 'Kasia' },
+  { id: 6, name: 'Juri' },
+  { id: 7, name: 'Roman' },
+  { id: 8, name: 'Piotrek' },
+  { id: 9, name: 'Paweł' },
+  { id: 10, name: 'Lucyna' },
+  { id: 11, name: 'Aneta' },
+  { id: 12, name: 'Klaudia' }
 ];
 
 @Component({
-  selector: 'my-app',
+  selector: 'my-student-detail',
 	template: `
 	<h1>{{title}}</h1>
     <h2>Students</h2>
@@ -29,18 +30,12 @@ const STUDENTS: Student[] = [
         <span class="badge">{{student.id}}</span> {{student.name}}
       </li>
     </ul>
-    <div *ngIf="selectedStudent">
-      <h2>{{selectedStudent.name}} details!</h2>
-      <div><label>id: </label>{{selectedStudent.id}}</div>
-      <div>
-        <label>name: </label>
-        <input [(ngModel)]="selectedStudent.name" placeholder="name"/>
-      </div>
-    </div>
 	
-	`
+	  <my-student-detail [student]="selectedStudent"></my-student-Student>
 	
-	styles: [`
+	`,
+	
+styles: [`
   .selected {
     background-color: #CFD8DC !important;
     color: white;
@@ -97,10 +92,11 @@ const STUDENTS: Student[] = [
 export class AppComponent  { 
 	title = 'Akademia 108 - lista studentow'; 
 	students = STUDENTS;
-	student: Student = {
-		id: 1;
-		name: "Juri Kuzmoczka";};
-	selectedStudent: student;	
+//	student: Student = {
+//		id: 1,
+//		name: "Juri Kuzmoczka",};
+	selectedStudent: Student;	
+	
 	onSelect(student: Student): void {
   	this.selectedStudent = student;
 }
